@@ -236,6 +236,11 @@
     }
     /* Responsive styles for tablet and mobile */
     @media (max-width: 991.98px) {
+      nav {
+        height: auto; /* Allow nav to grow with content */
+        min-height: 50px;
+        transition: height 0.3s;
+      }
       .navbar-content {
         flex-direction: row;
         align-items: center;
@@ -245,6 +250,9 @@
       .hamburger {
         display: flex;
       }
+      .search-form {
+        display: none;
+      }
       nav ul {
         display: none;
         flex-direction: column;
@@ -252,23 +260,13 @@
         width: 100%;
         padding: 8px 0;
         background: #5205eb;
-        position: absolute;
-        top: 100%;
-        left: 0;
         box-shadow: 0 4px 8px rgba(18, 0, 184, 0.05);
         margin-bottom: 0;
         z-index: 1000;
+        /* Remove position, max-height, overflow, transition */
       }
       nav ul.show {
         display: flex;
-      }
-      .navbar-brand span {
-        font-size: 1.2em !important;
-      }
-      .search-form {
-        flex-direction: column;
-        width: 100%;
-        gap: 4px;
       }
     }
     @media (max-width: 767.98px) {
@@ -592,7 +590,6 @@
   hamburger.addEventListener('click', () => {
     navLinks.classList.toggle('show');
   });
-  // Optional: close menu when a link is clicked (on mobile)
   navLinks.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
       if(window.innerWidth <= 991.98){
