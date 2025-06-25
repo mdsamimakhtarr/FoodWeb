@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EatOnce</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+  <!-- Add Font Awesome CDN in <head> for the icon -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+<!-- Add this in your <head> if not already present -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, #037cf5, yellow);
+  }
+  nav {
+    background: #5205eb;
+    box-shadow: 0 4px 8px rgba(18, 0, 184, 0.05);
+    height: 50px;
+    padding: 0 20px;
+    margin-top: 2px;
+    position: relative;
+    z-index: 10;
+    position: sticky;
+    top: 0;   
+  }
+  .navbar-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    padding: 12px 0;
+    margin: 0;
+  }
+  nav ul li a {
+    text-decoration: none;
+    color:white;
+    font-weight: 600;
+    font-size: 1.2em;
+    padding: 6px 14px;
+    border-radius: 4px;
+    transition: background 0.2s, color 0.2s;
+  }
+  nav ul li a:hover {
+    background: #ffb347;
+    color: #fff;
+  }
+  .search-form {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .search-form input[type="text"] {
+    padding: 6px 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 1em;
+  }
+  .search-form button {
+    padding: 6px 14px;
+    border-radius: 8px;
+    border: none;
+    background: #ffb347;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .search-form button:hover {
+    background: #e69500;
+  }
+  .container {
+    margin-top: 40px; /* Add space below navbar */
+  }
+  .container-fluid {
+  padding-left: 0;
+  padding-right: 0;
+}
+  /* Limit carousel height and show full image with medium size */
+  .carousel-inner {
+    height: 800px; /* Adjust as needed */
+    background: #fff;
+    padding: 0% 0;
+    margin-top: 0px;
+  }
+  .carousel-inner .carousel-item img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain; /* Show full image, keep aspect ratio */
+    background: #fff;
+  }
+  .btn-warning:hover{
+    background-color: #4f3004;
+    border-color: #ffb347;
+    color: #fff;
+    font-weight: 600;
+    border-radius: 50px;
+
+  }
+  .card-img-left{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    justify-content: left;
+  }
+  /* Decorative Login Modal */
+#loginModal .modal-content {
+  border-radius: 1.5rem;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  background: linear-gradient(135deg, #fff 60%, #ffb347 100%);
+  border: none;
+  padding: 1.5rem 1.5rem 1rem 1.5rem;
+}
+#loginModal .modal-header {
+  border-bottom: none;
+  justify-content: center;
+}
+#loginModal .modal-title {
+  font-weight: bold;
+  font-size: 1.7rem;
+  color: #5205eb;
+  letter-spacing: 1px;
+}
+#loginModal .btn-close {
+  position: absolute;
+  right: 1.5rem;
+  top: 1.5rem;
+  background-color: #ffb347;
+  border-radius: 50%;
+  opacity: 1;
+}
+#loginModal .form-label {
+  color: #5205eb;
+  font-weight: 600;
+}
+#loginModal .form-control {
+  border-radius: 0.75rem;
+  border: 1.5px solid #ffb347;
+  background: #f8f9fa;
+  font-size: 1.1em;
+  margin-bottom: 1rem;
+}
+#loginModal .form-control:focus {
+  border-color: #5205eb;
+  box-shadow: 0 0 0 0.2rem rgba(82,5,235,.15);
+}
+#loginModal .btn-primary {
+  background: linear-gradient(90deg, #5205eb 60%, #ffb347 100%);
+  border: none;
+  border-radius: 2rem;
+  font-weight: 700;
+  font-size: 1.1em;
+  letter-spacing: 1px;
+  transition: background 0.2s;
+}
+#loginModal .btn-primary:hover {
+  background: linear-gradient(90deg, #ffb347 60%, #5205eb 100%);
+}
+#loginModal .modal-body {
+  padding-bottom: 2rem;
+}
+#loginModal .forgot-link {
+  display: block;
+  text-align: right;
+  margin-top: 0.5rem;
+  color: #5205eb;
+  font-size: 0.98em;
+  text-decoration: none;
+}
+#loginModal .forgot-link:hover {
+  text-decoration: underline;
+  color: #ffb347;
+}
+.menu-card {
+  border-radius: 1rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+  border: none;
+}
+.menu-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 8px 32px 0 rgba(82,5,235,0.12);
+}
+.menu-card .card-img-top {
+  border-radius: 1rem 1rem 0 0;
+  height: 220px;
+  object-fit: cover;
+}
+.menu-card .btn-outline-warning {
+  border-radius: 2rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+/* Cyclic animated title styles */
+.animated-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #5205eb;
+  min-height: 60px;
+  transition: opacity 0.7s;
+  opacity: 1;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 8px #ffb34744;
+}
+</style>
+</head>
+<body>
+  <nav>
+    <div class="navbar-content">
+      <!-- Add this div for the brand icon and name -->
+<div class="navbar-brand" style="display: flex; align-items: center; gap: 8px;">
+  <i class="fas fa-utensils" style="font-size: 2em; color: #ffb347;"></i>
+  <span style="font-size: 1.7em; font-weight: bold; color: #fff;">EATONCE</span>
+</div>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#">Order</a></li>
+        <li>
+          <a href="#" data-bs-toggle="modal" data-bs-target="#contactModal">
+            Contact
+          </a>
+        </li>
+        <li>
+          <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal">
+            <i class="bi bi-person-circle"></i> Login
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="bi bi-person-check-fill"></i> Logout
+          </a>
+        </li>
+      </ul>
+      <form class="search-form">
+        <input type="text" placeholder="Search... Here" aria-label="Search">
+        <button type="submit">Search</button>
+      </form>
+    </div>
+  </nav>
+  <div class="container-fluid">
+    
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+       
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="https://images.pexels.com/photos/17696653/pexels-photo-17696653.jpeg" class="d-block w-100" alt="Biryani">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>First slide label</h5>
+            <p>Some representative placeholder content for the first slide.</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="https://images.pexels.com/photos/461382/pexels-photo-461382.jpeg" class="d-block w-100" alt="Biryani 2">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Second slide label</h5>
+            <p>Some representative placeholder content for the second slide.</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="https://images.pexels.com/photos/9609840/pexels-photo-9609840.jpeg" class="d-block w-100" alt="Biryani 3">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Third slide label</h5>
+            <p>Some representative placeholder content for the third slide.</p>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+  <div class="container my-5">
+  <h2 id="menu" class="text-center mb-4" style="color:#5205eb; font-weight:700;">Our Menu</h2>
+  <div class="row g-4 justify-content-center">
+    <div class="col-md-4">
+      <div class="card menu-card h-100 shadow">
+        <img src="https://images.pexels.com/photos/17696653/pexels-photo-17696653.jpeg" class="card-img-top" alt="Chicken Biryani">
+        <div class="card-body">
+          <h5 class="card-title">Chicken Biryani</h5>
+          <p class="card-text">Aromatic basmati rice cooked with tender chicken and traditional spices.</p>
+          <span class="badge bg-warning text-dark mb-2">₹220</span>
+          <a href="#" class="btn btn-outline-warning w-100" data-bs-toggle="modal" data-bs-target="#orderModal">Order</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card menu-card h-100 shadow">
+        <img src="https://images.pexels.com/photos/14731626/pexels-photo-14731626.jpeg" class="card-img-top" alt="Mutton Biryani">
+        <div class="card-body">
+          <h5 class="card-title">Mutton Biryani</h5>
+          <p class="card-text">Succulent mutton pieces layered with fragrant rice and saffron.</p>
+          <span class="badge bg-warning text-dark mb-2">₹320</span>
+          <a href="#" class="btn btn-outline-warning w-100" data-bs-toggle="modal" data-bs-target="#orderModal">Order</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card menu-card h-110 shadow">
+        <img src="https://images.pexels.com/photos/12916869/pexels-photo-12916869.jpeg" class="card-img-top" alt="Veg Biryani">
+        <div class="card-body">
+          <h5 class="card-title">Veg Biryani</h5>
+          <p class="card-text">A delightful mix of vegetables and rice, cooked with aromatic spices.</p>
+          <span class="badge bg-warning text-dark mb-2">₹180</span>
+          <a href="#" class="btn btn-outline-warning w-100" data-bs-toggle="modal" data-bs-target="#orderModal">Order</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Add a new row for more order boxes -->
+  <div class="row g-4 justify-content-center mt-1">
+    <div class="col-md-4">
+      <div class="card menu-card h-100 shadow">
+        <img src="https://images.pexels.com/photos/9609843/pexels-photo-9609843.jpeg" class="card-img-top" alt="Egg Biryani">
+        <div class="card-body">
+          <h5 class="card-title">Egg Biryani</h5>
+          <p class="card-text">Basmati rice and boiled eggs cooked with flavorful spices.</p>
+          <span class="badge bg-warning text-dark mb-2">₹150</span>
+          <a href="#" class="btn btn-outline-warning w-100" data-bs-toggle="modal" data-bs-target="#orderModal">Order</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card menu-card h-100 shadow">
+        <img src="https://images.pexels.com/photos/9609845/pexels-photo-9609845.jpeg" class="card-img-top" alt="Paneer Biryani">
+        <div class="card-body">
+          <h5 class="card-title">Paneer Biryani</h5>
+          <p class="card-text">Soft paneer cubes and rice cooked with aromatic masalas.</p>
+          <span class="badge bg-warning text-dark mb-2">₹200</span>
+          <a href="#" class="btn btn-outline-warning w-100" data-bs-toggle="modal" data-bs-target="#orderModal">Order</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card menu-card h-100 shadow">
+        <img src="https://images.pexels.com/photos/17649369/pexels-photo-17649369.jpeg" class="card-img-top" alt="Fish Biryani">
+        <div class="card-body">
+          <h5 class="card-title">Fish Biryani</h5>
+          <p class="card-text">Delicious fish fillets layered with spiced rice and herbs.</p>
+          <span class="badge bg-warning text-dark mb-2">₹250</span>
+          <a href="#" class="btn btn-outline-warning w-100" data-bs-toggle="modal" data-bs-target="#orderModal">Order</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- Login Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header position-relative">
+        <h5 class="modal-title w-100 text-center" id="loginModalLabel">
+          <i class="bi bi-person-circle" style="font-size:2rem; color:#ffb347; vertical-align:middle;"></i>
+          Login to <span style="color:#ffb347;">EATONCE</span>
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="login-username" class="form-label">Username or Email</label>
+            <input type="text" class="form-control" id="login-username" placeholder="Enter username or email">
+          </div>
+          <div class="mb-3">
+            <label for="login-password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="login-password" placeholder="Enter password">
+          </div>
+          <button type="submit" class="btn btn-primary w-100 mt-2">Login</button>
+          <a href="#" class="forgot-link">Forgot password?</a>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Contact Modal -->
+<div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header position-relative">
+        <h5 class="modal-title w-100 text-center" id="contactModalLabel">
+          <i class="bi bi-envelope-fill" style="font-size:2rem; color:#ffb347; vertical-align:middle;"></i>
+          Contact <span style="color:#ffb347;">EATONCE</span>
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="contact-name" class="form-label">Your Name</label>
+            <input type="text" class="form-control" id="contact-name" placeholder="Enter your name" required>
+          </div>
+          <div class="mb-3">
+            <label for="contact-email" class="form-label">Your Email</label>
+            <input type="email" class="form-control" id="contact-email" placeholder="Enter your email" required>
+          </div>
+          <div class="mb-3">
+            <label for="contact-message" class="form-label">Message</label>
+            <textarea class="form-control" id="contact-message" rows="4" placeholder="Type your message..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-warning w-100">Send Message</button>
+        </form>
+        <div class="contact-info mt-4 text-center" style="color:#5205eb;">
+          <p><i class="bi bi-envelope-fill" style="color:#ffb347;"></i> eatonce@gmail.com</p>
+          <p><i class="bi bi-telephone-fill" style="color:#ffb347;"></i> +91 9439143863</p>
+          <p><i class="bi bi-telephone-fill" style="color:#ffb347;"></i> +91 8018532863</p>
+          <p><i class="bi bi-geo-alt-fill" style="color:#ffb347;"></i> Bhubaneswar, ODISHA, India</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Order Modal -->
+<div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header position-relative">
+        <h5 class="modal-title w-100 text-center" id="orderModalLabel">
+          <i class="bi bi-bag-fill" style="font-size:2rem; color:#ffb347; vertical-align:middle;"></i>
+          Place Your <span style="color:#ffb347;">Order</span>
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="order-name" class="form-label">Your Name</label>
+            <input type="text" class="form-control" id="order-name" placeholder="Enter your name" required>
+          </div>
+          <div class="mb-3">
+            <label for="order-phone" class="form-label">Phone Number</label>
+            <input type="tel" class="form-control" id="order-phone" placeholder="Enter your phone number" required>
+          </div>
+          <div class="mb-3">
+            <label for="order-address" class="form-label">Delivery Address</label>
+            <textarea class="form-control" id="order-address" rows="2" placeholder="Enter your address" required></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="order-item" class="form-label">Order Details</label>
+            <input type="text" class="form-control" id="order-item" placeholder="e.g. Chicken Biryani x1" required>
+          </div>
+          <button type="submit" class="btn btn-warning w-100">Place Order <a href="#payment.html" data-bs-toggle="modal" data-bs-target="#paymentModal"></a></button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="cyclic-title text-center my-4">
+  <h1 id="animatedTitle" class="animated-title"></h1>
+</div>
+</body>
+</html>
