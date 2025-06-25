@@ -208,6 +208,104 @@
   letter-spacing: 2px;
   text-shadow: 0 2px 8px #ffb34744;
 }
+
+/* Responsive styles for tablet and mobile */
+@media (max-width: 991.98px) {
+  .navbar-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  nav ul {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    padding: 8px 0;
+    background: #5205eb;
+    position: static;
+    box-shadow: none;
+    margin-bottom: 0;
+  }
+  nav ul li {
+    width: 100%;
+  }
+  nav ul li a {
+    display: block;
+    width: 100%;
+    padding: 10px 14px;
+  }
+  .search-form {
+    width: 100%;
+    margin-top: 8px;
+  }
+  .container {
+    margin-top: 20px;
+  }
+  .carousel-inner {
+    height: 350px;
+  }
+  .menu-card .card-img-top {
+    height: 160px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .navbar-content {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+  nav ul {
+    flex-direction: column;
+    gap: 6px;
+    align-items: flex-start;
+    width: 100%;
+    padding: 6px 0;
+    background: #5205eb;
+    position: static;
+    box-shadow: none;
+    margin-bottom: 0;
+  }
+  nav ul li {
+    width: 100%;
+  }
+  nav ul li a {
+    display: block;
+    width: 100%;
+    padding: 10px 14px;
+  }
+  .navbar-brand span {
+    font-size: 1.2em !important;
+  }
+  .search-form {
+    flex-direction: column;
+    width: 100%;
+    gap: 4px;
+  }
+  .container,
+  .container-fluid {
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+  }
+  .carousel-inner {
+    height: 200px;
+  }
+  .menu-card .card-img-top {
+    height: 120px;
+  }
+  .row.g-4 > [class^="col-"] {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  .cyclic-title h1 {
+    font-size: 1.3rem;
+  }
+}
+
+/* Hide horizontal scroll on nav */
+nav {
+  overflow-x: hidden;
+}
 </style>
 </head>
 <body>
@@ -469,5 +567,45 @@
 <div class="cyclic-title text-center my-4">
   <h1 id="animatedTitle" class="animated-title"></h1>
 </div>
+
+<!-- Attractive Footer Start -->
+<footer style="background: linear-gradient(90deg, #5205eb 60%, #ffb347 100%); color: #fff; padding: 40px 0 0 0; margin-top: 40px; border-radius: 32px 32px 0 0;">
+  <div class="container">
+    <div class="row text-center text-md-start">
+      <div class="col-md-4 mb-4 mb-md-0">
+        <h4 style="font-weight:700; letter-spacing:1px;"><i class="fas fa-utensils" style="color:#ffb347;"></i> EATONCE</h4>
+        <p style="margin-top:10px;">Delicious biryanis delivered hot and fresh to your doorstep. Taste the tradition, love the flavor!</p>
+        <div>
+          <a href="#" class="me-2" style="color:#fff;"><i class="fab fa-facebook fa-lg"></i></a>
+          <a href="#" class="me-2" style="color:#fff;"><i class="fab fa-instagram fa-lg"></i></a>
+          <a href="#" class="me-2" style="color:#fff;"><i class="fab fa-twitter fa-lg"></i></a>
+          <a href="#" style="color:#fff;"><i class="fab fa-whatsapp fa-lg"></i></a>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4 mb-md-0">
+        <h5 style="font-weight:600;">Quick Links</h5>
+        <ul class="list-unstyled" style="margin-top:10px;">
+          <li><a href="index.html" style="color:#fff; text-decoration:none;">Home</a></li>
+          <li><a href="#menu" style="color:#fff; text-decoration:none;">Menu</a></li>
+          <li><a href="#" data-bs-toggle="modal" data-bs-target="#orderModal" style="color:#fff; text-decoration:none;">Order</a></li>
+          <li><a href="#" data-bs-toggle="modal" data-bs-target="#contactModal" style="color:#fff; text-decoration:none;">Contact</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <h5 style="font-weight:600;">Contact Us</h5>
+        <ul class="list-unstyled" style="margin-top:10px;">
+          <li><i class="bi bi-envelope-fill" style="color:#ffb347;"></i> eatonce@gmail.com</li>
+          <li><i class="bi bi-telephone-fill" style="color:#ffb347;"></i> +91 9439143863</li>
+          <li><i class="bi bi-geo-alt-fill" style="color:#ffb347;"></i> Bhubaneswar, ODISHA, India</li>
+        </ul>
+      </div>
+    </div>
+    <hr style="border-top:1px solid #fff; opacity:0.2;">
+    <div class="text-center pb-3" style="font-size:1em;">
+      &copy; 2025 <span style="color:#ffb347; font-weight:600;">EATONCE</span>. All Rights Reserved. Made with <i class="fas fa-heart" style="color:#ffb347;"></i> by Food Lovers.
+    </div>
+  </div>
+</footer>
+<!-- Attractive Footer End -->
 </body>
 </html>
