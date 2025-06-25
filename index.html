@@ -249,30 +249,44 @@
   }
 }
 
-@media (max-width: 767.98px) {
-  .navbar-content {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 8px;
+/* Hamburger styles */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  margin-left: 10px;
+  z-index: 1001;
+}
+.hamburger span {
+  height: 4px;
+  width: 100%;
+  background: #ffb347;
+  margin: 4px 0;
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+/* Show hamburger and hide nav ul on mobile */
+@media (max-width: 991.98px) {
+  .hamburger {
+    display: flex;
   }
   nav ul {
+    display: none;
     flex-direction: column;
-    gap: 6px;
-    align-items: flex-start;
+    gap: 10px;
     width: 100%;
-    padding: 6px 0;
+    padding: 8px 0;
     background: #5205eb;
     position: static;
     box-shadow: none;
     margin-bottom: 0;
   }
-  nav ul li {
-    width: 100%;
-  }
-  nav ul li a {
-    display: block;
-    width: 100%;
-    padding: 10px 14px;
+  nav ul.show {
+    display: flex;
   }
   .navbar-brand span {
     font-size: 1.2em !important;
@@ -311,12 +325,19 @@ nav {
 <body>
   <nav>
     <div class="navbar-content">
-      <!-- Add this div for the brand icon and name -->
-<div class="navbar-brand" style="display: flex; align-items: center; gap: 8px;">
-  <i class="fas fa-utensils" style="font-size: 2em; color: #ffb347;"></i>
-  <span style="font-size: 1.7em; font-weight: bold; color: #fff;">EATONCE</span>
-</div>
-      <ul>
+      <!-- Brand -->
+      <div class="navbar-brand" style="display: flex; align-items: center; gap: 8px;">
+        <i class="fas fa-utensils" style="font-size: 2em; color: #ffb347;"></i>
+        <span style="font-size: 1.7em; font-weight: bold; color: #fff;">EATONCE</span>
+      </div>
+      <!-- Hamburger Button -->
+      <div class="hamburger" id="hamburgerMenu" aria-label="Toggle navigation" tabindex="0">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <!-- Navigation Links -->
+      <ul id="navLinks">
         <li><a href="index.html">Home</a></li>
         <li><a href="#menu">Menu</a></li>
         <li><a href="#">Order</a></li>
@@ -336,6 +357,7 @@ nav {
           </a>
         </li>
       </ul>
+      <!-- ...existing search form... -->
       <form class="search-form">
         <input type="text" placeholder="Search... Here" aria-label="Search">
         <button type="submit">Search</button>
@@ -607,5 +629,21 @@ nav {
   </div>
 </footer>
 <!-- Attractive Footer End -->
+<script>
+  // Hamburger menu toggle
+  const hamburger = document.getElementById('hamburgerMenu');
+  const navLinks = document.getElementById('navLinks');
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('show');
+  });
+  // Optional: close menu when a link is clicked (on mobile)
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      if(window.innerWidth <= 991.98){
+        navLinks.classList.remove('show');
+      }
+    });
+  });
+</script>
 </body>
 </html>
