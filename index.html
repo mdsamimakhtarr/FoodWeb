@@ -4,331 +4,297 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>EatOnce</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
-  <!-- Add Font Awesome CDN in <head> for the icon -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-<!-- Add this in your <head> if not already present -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <style>
-  body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(to right, #037cf5, yellow);
-  }
-  nav {
-    background: #5205eb;
-    box-shadow: 0 4px 8px rgba(18, 0, 184, 0.05);
-    height: 50px;
-    padding: 0 20px;
-    margin-top: 2px;
-    position: relative;
-    z-index: 10;
-    position: sticky;
-    top: 0;   
-  }
-  .navbar-content {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  nav ul {
-    list-style: none;
-    display: flex;
-    gap: 30px;
-    padding: 12px 0;
-    margin: 0;
-  }
-  nav ul li a {
-    text-decoration: none;
-    color:white;
-    font-weight: 600;
-    font-size: 1.2em;
-    padding: 6px 14px;
-    border-radius: 4px;
-    transition: background 0.2s, color 0.2s;
-  }
-  nav ul li a:hover {
-    background: #ffb347;
-    color: #fff;
-  }
-  .search-form {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .search-form input[type="text"] {
-    padding: 6px 10px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    font-size: 1em;
-  }
-  .search-form button {
-    padding: 6px 14px;
-    border-radius: 8px;
-    border: none;
-    background: #ffb347;
-    color: #fff;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.2s;
-  }
-  .search-form button:hover {
-    background: #e69500;
-  }
-  .container {
-    margin-top: 40px; /* Add space below navbar */
-  }
-  .container-fluid {
-  padding-left: 0;
-  padding-right: 0;
-}
-  /* Limit carousel height and show full image with medium size */
-  .carousel-inner {
-    height: 800px; /* Adjust as needed */
-    background: #fff;
-    padding: 0% 0;
-    margin-top: 0px;
-  }
-  .carousel-inner .carousel-item img {
-    height: 100%;
-    width: 100%;
-    object-fit: contain; /* Show full image, keep aspect ratio */
-    background: #fff;
-  }
-  .btn-warning:hover{
-    background-color: #4f3004;
-    border-color: #ffb347;
-    color: #fff;
-    font-weight: 600;
-    border-radius: 50px;
-
-  }
-  .card-img-left{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    justify-content: left;
-  }
-  /* Decorative Login Modal */
-#loginModal .modal-content {
-  border-radius: 1.5rem;
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  background: linear-gradient(135deg, #fff 60%, #ffb347 100%);
-  border: none;
-  padding: 1.5rem 1.5rem 1rem 1.5rem;
-}
-#loginModal .modal-header {
-  border-bottom: none;
-  justify-content: center;
-}
-#loginModal .modal-title {
-  font-weight: bold;
-  font-size: 1.7rem;
-  color: #5205eb;
-  letter-spacing: 1px;
-}
-#loginModal .btn-close {
-  position: absolute;
-  right: 1.5rem;
-  top: 1.5rem;
-  background-color: #ffb347;
-  border-radius: 50%;
-  opacity: 1;
-}
-#loginModal .form-label {
-  color: #5205eb;
-  font-weight: 600;
-}
-#loginModal .form-control {
-  border-radius: 0.75rem;
-  border: 1.5px solid #ffb347;
-  background: #f8f9fa;
-  font-size: 1.1em;
-  margin-bottom: 1rem;
-}
-#loginModal .form-control:focus {
-  border-color: #5205eb;
-  box-shadow: 0 0 0 0.2rem rgba(82,5,235,.15);
-}
-#loginModal .btn-primary {
-  background: linear-gradient(90deg, #5205eb 60%, #ffb347 100%);
-  border: none;
-  border-radius: 2rem;
-  font-weight: 700;
-  font-size: 1.1em;
-  letter-spacing: 1px;
-  transition: background 0.2s;
-}
-#loginModal .btn-primary:hover {
-  background: linear-gradient(90deg, #ffb347 60%, #5205eb 100%);
-}
-#loginModal .modal-body {
-  padding-bottom: 2rem;
-}
-#loginModal .forgot-link {
-  display: block;
-  text-align: right;
-  margin-top: 0.5rem;
-  color: #5205eb;
-  font-size: 0.98em;
-  text-decoration: none;
-}
-#loginModal .forgot-link:hover {
-  text-decoration: underline;
-  color: #ffb347;
-}
-.menu-card {
-  border-radius: 1rem;
-  transition: transform 0.2s, box-shadow 0.2s;
-  border: none;
-}
-.menu-card:hover {
-  transform: translateY(-8px) scale(1.03);
-  box-shadow: 0 8px 32px 0 rgba(82,5,235,0.12);
-}
-.menu-card .card-img-top {
-  border-radius: 1rem 1rem 0 0;
-  height: 220px;
-  object-fit: cover;
-}
-.menu-card .btn-outline-warning {
-  border-radius: 2rem;
-  font-weight: 600;
-  letter-spacing: 1px;
-}
-/* Cyclic animated title styles */
-.animated-title {
-  font-size: 2.5rem;
-  font-weight: bold;
-  color: #5205eb;
-  min-height: 60px;
-  transition: opacity 0.7s;
-  opacity: 1;
-  letter-spacing: 2px;
-  text-shadow: 0 2px 8px #ffb34744;
-}
-
-/* Responsive styles for tablet and mobile */
-@media (max-width: 991.98px) {
-  .navbar-content {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-  }
-  nav ul {
-    flex-direction: column;
-    gap: 10px;
-    width: 100%;
-    padding: 8px 0;
-    background: #5205eb;
-    position: static;
-    box-shadow: none;
-    margin-bottom: 0;
-  }
-  nav ul li {
-    width: 100%;
-  }
-  nav ul li a {
-    display: block;
-    width: 100%;
-    padding: 10px 14px;
-  }
-  .search-form {
-    width: 100%;
-    margin-top: 8px;
-  }
-  .container {
-    margin-top: 20px;
-  }
-  .carousel-inner {
-    height: 350px;
-  }
-  .menu-card .card-img-top {
-    height: 160px;
-  }
-}
-
-/* Hamburger styles */
-.hamburger {
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  cursor: pointer;
-  width: 32px;
-  height: 32px;
-  margin-left: 10px;
-  z-index: 1001;
-}
-.hamburger span {
-  height: 4px;
-  width: 100%;
-  background: #ffb347;
-  margin: 4px 0;
-  border-radius: 2px;
-  transition: 0.3s;
-}
-
-/* Show hamburger and hide nav ul on mobile */
-@media (max-width: 991.98px) {
-  .hamburger {
-    display: flex;
-  }
-  nav ul {
-    display: none;
-    flex-direction: column;
-    gap: 10px;
-    width: 100%;
-    padding: 8px 0;
-    background: #5205eb;
-    position: static;
-    box-shadow: none;
-    margin-bottom: 0;
-  }
-  nav ul.show {
-    display: flex;
-  }
-  .navbar-brand span {
-    font-size: 1.2em !important;
-  }
-  .search-form {
-    flex-direction: column;
-    width: 100%;
-    gap: 4px;
-  }
-  .container,
-  .container-fluid {
-    padding-left: 8px !important;
-    padding-right: 8px !important;
-  }
-  .carousel-inner {
-    height: 200px;
-  }
-  .menu-card .card-img-top {
-    height: 120px;
-  }
-  .row.g-4 > [class^="col-"] {
-    flex: 0 0 100%;
-    max-width: 100%;
-  }
-  .cyclic-title h1 {
-    font-size: 1.3rem;
-  }
-}
-
-/* Hide horizontal scroll on nav */
-nav {
-  overflow-x: hidden;
-}
-</style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #037cf5, yellow);
+    }
+    nav {
+      background: #5205eb;
+      box-shadow: 0 4px 8px rgba(18, 0, 184, 0.05);
+      height: 50px;
+      padding: 0 20px;
+      margin-top: 2px;
+      position: relative;
+      z-index: 10;
+      position: sticky;
+      top: 0;
+      overflow-x: hidden;
+    }
+    .navbar-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .navbar-brand span {
+      font-size: 1.7em;
+      font-weight: bold;
+      color: #fff;
+    }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      cursor: pointer;
+      width: 32px;
+      height: 32px;
+      margin-left: 10px;
+      z-index: 1001;
+    }
+    .hamburger span {
+      height: 4px;
+      width: 100%;
+      background: #ffb347;
+      margin: 4px 0;
+      border-radius: 2px;
+      transition: 0.3s;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+      padding: 12px 0;
+      margin: 0;
+      align-items: center;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: white;
+      font-weight: 600;
+      font-size: 1.2em;
+      padding: 6px 14px;
+      border-radius: 4px;
+      transition: background 0.2s, color 0.2s;
+    }
+    nav ul li a:hover {
+      background: #ffb347;
+      color: #fff;
+    }
+    .search-form {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .search-form input[type="text"] {
+      padding: 6px 10px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      font-size: 1em;
+    }
+    .search-form button {
+      padding: 6px 14px;
+      border-radius: 8px;
+      border: none;
+      background: #ffb347;
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .search-form button:hover {
+      background: #e69500;
+    }
+    .container {
+      margin-top: 40px;
+    }
+    .container-fluid {
+      padding-left: 0;
+      padding-right: 0;
+    }
+    .carousel-inner {
+      height: 800px;
+      background: #fff;
+      padding: 0% 0;
+      margin-top: 0px;
+    }
+    .carousel-inner .carousel-item img {
+      height: 100%;
+      width: 100%;
+      object-fit: contain;
+      background: #fff;
+    }
+    .btn-warning:hover {
+      background-color: #4f3004;
+      border-color: #ffb347;
+      color: #fff;
+      font-weight: 600;
+      border-radius: 50px;
+    }
+    .card-img-left {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      justify-content: left;
+    }
+    /* Decorative Login Modal */
+    #loginModal .modal-content {
+      border-radius: 1.5rem;
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      background: linear-gradient(135deg, #fff 60%, #ffb347 100%);
+      border: none;
+      padding: 1.5rem 1.5rem 1rem 1.5rem;
+    }
+    #loginModal .modal-header {
+      border-bottom: none;
+      justify-content: center;
+    }
+    #loginModal .modal-title {
+      font-weight: bold;
+      font-size: 1.7rem;
+      color: #5205eb;
+      letter-spacing: 1px;
+    }
+    #loginModal .btn-close {
+      position: absolute;
+      right: 1.5rem;
+      top: 1.5rem;
+      background-color: #ffb347;
+      border-radius: 50%;
+      opacity: 1;
+    }
+    #loginModal .form-label {
+      color: #5205eb;
+      font-weight: 600;
+    }
+    #loginModal .form-control {
+      border-radius: 0.75rem;
+      border: 1.5px solid #ffb347;
+      background: #f8f9fa;
+      font-size: 1.1em;
+      margin-bottom: 1rem;
+    }
+    #loginModal .form-control:focus {
+      border-color: #5205eb;
+      box-shadow: 0 0 0 0.2rem rgba(82,5,235,.15);
+    }
+    #loginModal .btn-primary {
+      background: linear-gradient(90deg, #5205eb 60%, #ffb347 100%);
+      border: none;
+      border-radius: 2rem;
+      font-weight: 700;
+      font-size: 1.1em;
+      letter-spacing: 1px;
+      transition: background 0.2s;
+    }
+    #loginModal .btn-primary:hover {
+      background: linear-gradient(90deg, #ffb347 60%, #5205eb 100%);
+    }
+    #loginModal .modal-body {
+      padding-bottom: 2rem;
+    }
+    #loginModal .forgot-link {
+      display: block;
+      text-align: right;
+      margin-top: 0.5rem;
+      color: #5205eb;
+      font-size: 0.98em;
+      text-decoration: none;
+    }
+    #loginModal .forgot-link:hover {
+      text-decoration: underline;
+      color: #ffb347;
+    }
+    .menu-card {
+      border-radius: 1rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+      border: none;
+    }
+    .menu-card:hover {
+      transform: translateY(-8px) scale(1.03);
+      box-shadow: 0 8px 32px 0 rgba(82,5,235,0.12);
+    }
+    .menu-card .card-img-top {
+      border-radius: 1rem 1rem 0 0;
+      height: 220px;
+      object-fit: cover;
+    }
+    .menu-card .btn-outline-warning {
+      border-radius: 2rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+    .animated-title {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #5205eb;
+      min-height: 60px;
+      transition: opacity 0.7s;
+      opacity: 1;
+      letter-spacing: 2px;
+      text-shadow: 0 2px 8px #ffb34744;
+    }
+    /* Responsive styles for tablet and mobile */
+    @media (max-width: 991.98px) {
+      .navbar-content {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+      }
+      .hamburger {
+        display: flex;
+      }
+      nav ul {
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+        padding: 8px 0;
+        background: #5205eb;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        box-shadow: 0 4px 8px rgba(18, 0, 184, 0.05);
+        margin-bottom: 0;
+        z-index: 1000;
+      }
+      nav ul.show {
+        display: flex;
+      }
+      .navbar-brand span {
+        font-size: 1.2em !important;
+      }
+      .search-form {
+        flex-direction: column;
+        width: 100%;
+        gap: 4px;
+      }
+    }
+    @media (max-width: 767.98px) {
+      .carousel-inner {
+        height: 200px;
+      }
+      .menu-card .card-img-top {
+        height: 120px;
+      }
+      .row.g-4 > [class^="col-"] {
+        flex: 0 0 100%;
+        max-width: 100%;
+      }
+      .cyclic-title h1 {
+        font-size: 1.3rem;
+      }
+    }
+  </style>
 </head>
 <body>
   <nav>
     <div class="navbar-content">
       <!-- Brand -->
-      <div class="navbar-brand" style="display: flex; align-items: center; gap: 8px;">
+      <div class="navbar-brand">
         <i class="fas fa-utensils" style="font-size: 2em; color: #ffb347;"></i>
-        <span style="font-size: 1.7em; font-weight: bold; color: #fff;">EATONCE</span>
+        <span>EATONCE</span>
       </div>
       <!-- Hamburger Button -->
       <div class="hamburger" id="hamburgerMenu" aria-label="Toggle navigation" tabindex="0">
@@ -340,24 +306,12 @@ nav {
       <ul id="navLinks">
         <li><a href="index.html">Home</a></li>
         <li><a href="#menu">Menu</a></li>
-        <li><a href="#">Order</a></li>
-        <li>
-          <a href="#" data-bs-toggle="modal" data-bs-target="#contactModal">
-            Contact
-          </a>
-        </li>
-        <li>
-          <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal">
-            <i class="bi bi-person-circle"></i> Login
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class="bi bi-person-check-fill"></i> Logout
-          </a>
-        </li>
+        <li><a href="#" data-bs-toggle="modal" data-bs-target="#orderModal">Order</a></li>
+        <li><a href="#" data-bs-toggle="modal" data-bs-target="#contactModal">Contact</a></li>
+        <li><a href="#" data-bs-toggle="modal" data-bs-target="#loginModal"><i class="bi bi-person-circle"></i> Login</a></li>
+        <li><a href="#"><i class="bi bi-person-check-fill"></i> Logout</a></li>
       </ul>
-      <!-- ...existing search form... -->
+      <!-- Search Form -->
       <form class="search-form">
         <input type="text" placeholder="Search... Here" aria-label="Search">
         <button type="submit">Search</button>
@@ -629,6 +583,8 @@ nav {
   </div>
 </footer>
 <!-- Attractive Footer End -->
+
+<!-- Add this script before </body> -->
 <script>
   // Hamburger menu toggle
   const hamburger = document.getElementById('hamburgerMenu');
@@ -645,5 +601,6 @@ nav {
     });
   });
 </script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
